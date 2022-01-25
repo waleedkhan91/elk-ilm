@@ -8,25 +8,25 @@ Then create the Index Template from Index Management.
 
 Provide Following Index settings while creating Index Template.
 
-{
-  "index": {
-    "lifecycle": {
-      "name": "test-ilm",
-      "rollover_alias": "test-ilm"
-    },
-    "number_of_shards": "1",
-    "refresh_interval": "5s"
-  }
-}
+    {
+      "index": {
+        "lifecycle": {
+          "name": "test-ilm",
+          "rollover_alias": "test-ilm"
+        },
+        "number_of_shards": "1",
+        "refresh_interval": "5s"
+      }
+    }
 
 On mapping, create @timestamp with type Date, @version with type Keyword and geoip with type object. Then create template.
 
 Provide following settings in logstash.yl according to your elastic cloud instance.
 
-xpack.monitoring.elasticsearch.hosts: XXXX
-xpack.monitoring.enabled: true
-xpack.monitoring.elasticsearch.username: XXXX
-xpack.monitoring.elasticsearch.password: XXXX
+    xpack.monitoring.elasticsearch.hosts: XXXX
+    xpack.monitoring.enabled: true
+    xpack.monitoring.elasticsearch.username: XXXX
+    xpack.monitoring.elasticsearch.password: XXXX
 
 Also update pipeline -> flog.conf according to your ES cloud instance.
 
