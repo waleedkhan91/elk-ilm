@@ -1,0 +1,52 @@
+version: '3.2'
+
+services:
+  logstash:
+    build:
+      context: logstash/
+      args:
+        ELK_VERSION: $ELK_VERSION
+    volumes:
+      - type: bind
+        source: ./logstash/config/logstash.yml
+        target: /usr/share/logstash/config/logstash.yml
+        read_only: true
+      - type: bind
+        source: ./logstash/pipeline
+        target: /usr/share/logstash/pipeline
+        read_only: true
+    ports:
+      - "5000:5000/tcp"
+      - "5000:5000/udp"
+      - "9600:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - elk
+  filebeat:
+    build: ./filebeat
+    entrypoint: "filebeat -e -strict.perms=false"
+    volumes:
+      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - ./flog/logs:/var/log/
+    networks:
+      - elk
+    depends_on:
+      - logstash
+  flog:
+    build:
+      context: flog/
+    command: "/bin/sh/flog -f rfc3164 -l -t log -o /var/log/apache.log"
+    volumes:
+      - ./flog/logs:/var/log/
+    networks:
+      - elk
+    depends_on:
+      - logstash
+
+networks:
+  elk:
+    driver: bridge
+
+volumes:
+  elasticsearch:

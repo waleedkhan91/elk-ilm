@@ -1,0 +1,15 @@
+---
+## Default Logstash configuration from Logstash base image.
+## https://github.com/elastic/logstash/blob/master/docker/data/logstash/config/logstash-full.yml
+#
+
+#http.host: "0.0.0.0"
+xpack.monitoring.elasticsearch.hosts: [ "https://elk-2.es.us-east4.gcp.elastic-cloud.com:9243" ]
+
+## X-Pack security credentials
+#
+#cloud.id: "elk-2:dXMtZWFzdDQuZ2NwLmVsYXN0aWMtY2xvdWQuY29tJGVjZWVlMmU2NmRkNzRlNmZhMDg2NmJjZDljNGM5M2Y5JGVmZDU2MzliMDcyMzQ5ODhhOWEzZjk4M2Y2N2YwYTUz"
+#cloud.auth: "elastic:6H6NiSfY1ByNe7f3TjAlWkC2"
+xpack.monitoring.enabled: true
+xpack.monitoring.elasticsearch.username: elastic
+xpack.monitoring.elasticsearch.password: 6H6NiSfY1ByNe7f3TjAlWkC2
