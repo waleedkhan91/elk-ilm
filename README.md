@@ -21,7 +21,7 @@ Provide Following Index settings while creating Index Template.
 
 On mapping, create @timestamp with type Date, @version with type Keyword and geoip with type object. Then create template.
 
-Provide following settings in logstash.yl according to your elastic cloud instance.
+Provide following settings in logstash.yml according to your elastic cloud instance.
 
     xpack.monitoring.elasticsearch.hosts: XXXX
     xpack.monitoring.enabled: true
