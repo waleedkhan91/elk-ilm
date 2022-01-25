@@ -19,9 +19,9 @@ Provide Following Index settings while creating Index Template.
       }
     }
 
-On mapping, create @timestamp with type Date, @version with type Keyword and geoip with type object. Then create template.
+On mapping, create `@timestamp` with type `Date`, `@version` with type `Keyword` and `geoip` with type `object`. Then create template.
 
-Provide following settings in logstash.yml according to your elastic cloud instance.
+Provide following settings in `logstash.yml` according to your elastic cloud instance.
 
     xpack.monitoring.elasticsearch.hosts: XXXX
     xpack.monitoring.enabled: true
@@ -30,7 +30,7 @@ Provide following settings in logstash.yml according to your elastic cloud insta
 
 Also update pipeline -> flog.conf according to your ES cloud instance.
 
-Also I have used my own IP address in filebeat.yml and my credentials of free trial in elastic cloud.
+Also I have used my own IP address in `filebeat.yml` and my credentials of free trial in elastic cloud.
 
 Feel free to drop me an email if you have any questions.
 
